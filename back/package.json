@@ -1,0 +1,17 @@
+{
+  "name": "toolbox_hexes_back",
+  "version": "1.0.0",
+  "description": "Hex List API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.10",
+    "nodemon": "^2.0.19"
+  }
+}
