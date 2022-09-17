@@ -1,32 +1,24 @@
 const express = require('express')
-const fetch = require('node-fetch')
-
+const morgan = require('morgan')
+const { filesList } = require('./dataflows/listing')
+const { allFilesContent } = require('./dataflows/content')
 
 const app = express()
+app.use(morgan('tiny'))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/files/data', async (req, res) => {
-  const file = await getSingleFileData()
-  res.send({ file })
+app.get('/files/list', async (req, res) => {
+  const list = await filesList()
+  res.send( list )
 })
 
-async function getSingleFileData ()  {
-  const init = {
-    method: "GET",
-    headers: {
-      Authorization: 'Bearer aSuperSecretKey',
-      'content-type': 'text/csv;charset=UTF-8',
-    }
-  }
-  const url = 'https://echo-serv.tbxnet.com/v1/secret/file/test2.csv'
-  const res = await fetch (url, init)
-  const text = await res.text()
-  return text.split("\n").slice(1)
-}
-
+app.get('/files/data', async (req, res) => {
+  const data = await allFilesContent()
+  res.send(data)
+})
 
 app.listen(3000, () => {
   console.log(`Example app listening on port ${3000}`)
