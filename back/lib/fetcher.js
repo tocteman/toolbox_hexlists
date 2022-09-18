@@ -36,5 +36,4 @@ const initCsvGet = () => {
   }
 }
 
-
 module.exports = { getJson, getCsv }

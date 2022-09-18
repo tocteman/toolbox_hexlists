@@ -14,6 +14,13 @@ export const getAllFiles = () => {
     .catch(err => err)
 }
 
+export const getSingleFile = file => {
+  const url = `${API_URL}/files/data/${file}`
+  return fetch(url, getInit)
+    .then(x => x.json())
+    .catch(err => err)
+}
+
 export const getList = () => {
   const url = `${API_URL}/files/list`
   return fetch(url, getInit)

@@ -16,4 +16,11 @@ const allFilesContent = async () => {
         .filter(x => x) // remove nulled files
 }
 
-module.exports = { allFilesContent }
+
+const singleFileContent = async ({fileName}) => {
+  const file = await getCsv({suffix: `file/${fileName}`})
+  const parsed = parseCsv(file)
+  return parsed ?? {file: fileName, lines: []}
+}
+
+module.exports = { allFilesContent, singleFileContent }

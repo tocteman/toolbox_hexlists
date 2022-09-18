@@ -3,13 +3,12 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 const { filesList } = require('./dataflows/listing')
-const { allFilesContent } = require('./dataflows/content')
+const { allFilesContent, singleFileContent } = require('./dataflows/content')
 
 const app = express()
 app.use(morgan('tiny'))
 app.use(helmet())
 app.use(cors())
-
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -25,7 +24,11 @@ app.get('/files/data',  async (req, res) => {
   res.send(data)
 })
 
+app.get('/files/data/:file', async (req, res) => {
+  const data = await singleFileContent({fileName: req.params['file']})
+  res.send(data)
+})
+
 app.listen(3000, () => {
   console.log(`Example app listening on port ${3000}`)
 })
-

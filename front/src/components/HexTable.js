@@ -3,8 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 const HexTable = ({data}) => {
 
-  if (!data) return <p>No data yet</p>
-
+  if (!data) return <p>Cargando...</p>
 
   const rows = data.map(x =>
     x.lines.map(y =>
@@ -23,6 +22,9 @@ const HexTable = ({data}) => {
         </tr>
       </thead>
       <tbody>
+        {rows.length === 0 &&
+         <p>No hay filas</p>
+        }
     {rows.map((x, i) => (
       <tr key={i}>
         <td>{x.fileName}</td>
