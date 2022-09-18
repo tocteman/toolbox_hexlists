@@ -17,10 +17,10 @@ const FileSelector = ({setData, select}) => {
   }
 
   return (
-    <div>
+    <div className="ms-auto">
       {files?.length > 0 ? (
         <Dropdown onSelect={(eventKey, e) => handleSelect(eventKey, e)} >
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="warning" id="dropdown-basic">
             Elegir archivo
           </Dropdown.Toggle>
           <Dropdown.Menu>

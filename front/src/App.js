@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Alert from 'react-bootstrap/Alert';
+import Topbar from './components/Topbar'
 import HexTable from './components/HexTable'
-import Stack from 'react-bootstrap/Stack'
-import FileSelector from './components/FileSelector'
-import FileSelectorReset from './components/FileSelectorReset'
 import { getAllFiles, getSingleFile } from './services/Fetcher'
 
 const App = ({ title }) => {
@@ -15,26 +12,21 @@ const App = ({ title }) => {
           await getSingleFile(selected) :
           await getAllFiles()
     if (fetched) {
-      const cur = selected ? [fetched] : fetched
-      setData(cur)
+      setData(selected ? [fetched] : fetched)
     }
   }, [selected])
 
-  const select = file => {
-    setSelectedFile(file)
-  }
+  const select = file => setSelectedFile(file)
 
   return (
-    <div>
-      <Stack class="bg-danger" direction="horizontal" gap={3}>
-        <Alert variant={'secondary'}>
-          <h3>{title}</h3>
-        </Alert>
-        <FileSelector select={select}/>
-        {selected && <FileSelectorReset select={select}/>}
-      </Stack>
+    <>
+      <Topbar
+        select={select}
+        selected={selected}
+        title={title}
+      />
       <HexTable data={data}/>
-    </div>
+    </>
   )
 }
 

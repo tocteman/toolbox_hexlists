@@ -1,6 +1,8 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
 
+// La estructura de los datos recibidos es
+// [{ file: "", lines: [{text, number, hex}] }]
 const HexTable = ({data}) => {
 
   if (!data) return <p>Cargando...</p>
@@ -23,7 +25,11 @@ const HexTable = ({data}) => {
       </thead>
       <tbody>
         {rows.length === 0 &&
-         <p>No hay filas</p>
+         <tr>
+           <td colSpan={4}>
+             No hemos conseguido información válida de ese archivo.
+           </td>
+         </tr>
         }
     {rows.map((x, i) => (
       <tr key={i}>
