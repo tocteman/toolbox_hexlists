@@ -7,7 +7,6 @@ const FileSelector = ({setData, select}) => {
 
   useEffect(async() => {
     const fetched = await getList()
-    console.log({fetched})
     if (fetched) {
       setFiles(fetched.files)
     }
