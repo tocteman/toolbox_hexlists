@@ -18,18 +18,18 @@ const getCsv = async ({suffix}) => {
 }
 
 const initJsonGet = {
-    method: "GET",
-    headers: {
-      "authorization": `Bearer ${ECHO_KEY}`,
-      'Content-Type': 'application/json',
-    }
+  method: "GET",
+  headers: {
+    "authorization": `Bearer ${ECHO_KEY}`,
+    'Content-Type': 'application/json',
   }
+}
 const initCsvGet = {
-    method: "GET",
-    headers: {
-      "Authorization": `Bearer ${ECHO_KEY}`,
-      'Content-Type': 'text/csv;charset=UTF-8',
-    }
+  method: "GET",
+  headers: {
+    "Authorization": `Bearer ${ECHO_KEY}`,
+    'Content-Type': 'text/csv;charset=UTF-8',
   }
+}
 
 module.exports = { getJson, getCsv }

@@ -11,7 +11,7 @@ const allFilesContent = async () => {
 
   return contentResp
         .filter(x => x.status === 'fulfilled')
-        .map(x => x.value) // extract value from fulfilled promise
+        .map(x => x.value) 
         .map(x => parseCsv(x))
         .filter(x => x) // remove nulled files
 }
